@@ -1,0 +1,33 @@
+
+.iconic {
+    border-radius: 80%;
+
+    }
+  
+    .iconic:hover {
+    box-shadow: 0 0 2px 1px rgba(167, 152, 21, 0.5);
+    }
+
+.g1_img {
+    border-radius: 90%;
+    }
+
+.compare {
+    float: right;
+    z-index: auto;
+
+    }
+
+.left {
+    width: 25%;
+    }
+      
+.right {
+     width: 75%;
+    }
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }

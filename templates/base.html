@@ -7,6 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/styles/styles.css">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
@@ -15,14 +18,15 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-  <h3 class="w3-padding-64 w3-center"><b>Open<br>Weather</b></h3>
+<nav class="w3-sidebar w3-bar-block w3-sand w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+  <h3 class="w3-padding-64 w3-center"><b>Am I <br> Retired Yet?</b></h3>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
   <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">Home</a> 
   <a href="cloudiness.html" onclick="w3_close()" class="w3-bar-item w3-button">Cloudiness</a>
   <a href="humidity.html" onclick="w3_close()" class="w3-bar-item w3-button">Humidty</a> 
   <a href="tempature.html" onclick="w3_close()" class="w3-bar-item w3-button">Tempature</a>
   <a href="windspeed.html" onclick="w3_close()" class="w3-bar-item w3-button">Wind Speed</a>
+  <a href="compare.html" onclick="w3_close()" class="w3-bar-item w3-button">Comparison's</a>
 </nav>
 
 <!-- Top menu on small screens -->
@@ -45,10 +49,16 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-center w3-padding-32">
     <div class="w3-bar">
       <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+      <a href="humidity.html" class="w3-bar-item w3-light-grey w3-button iconic">
+        <image src="{{url_for('static', filename='images/sunX.png')}}" alt="Home" width="100" height="100"></image>
+      </a>
+      <a href="cloudiness.html" class="w3-bar-item w3-button w3-hover-black">2</a>
+      <a href="index.html" class="w3-bar-item w3-button w3-light-grey iconic">
+        <image src="{{url_for('static', filename='images/beach.png')}}" alt="Home"  width="100" height="100"></image>
+      </a>
+      <a href="tempature.html" class="w3-bar-item w3-button w3-hover-black">4</a>
+      <a href="windspeed.html" class="w3-bar-item w3-button w3-hover-black">5</a>
+      <a href="compare.html" class="w3-bar-item w3-button w3-hover-black">5</a>
       <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
     </div>
   </div>
@@ -62,41 +72,22 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- Sumarry section -->
+  <!-- Summary section -->
   <!-- This includes visualizations and information for 
     other pages. -->
-  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-    <h4><b>Latitude V.S. X</b></h4>
-    <img src="" alt="Me" class="w3-image w3-padding-32" width="600" height="650">
+  <div class="w3-container w3-white w3-center w3-text-grey w3-padding-32" id="about">
+    <h4><b>Latitude V.S. {% block title %}{% endblock %}</b></h4>
+    {% block header_image %}{% endblock %}
     <div class="w3-content w3-justify" style="max-width:600px">
-      <h4>Summary</h4>
-      <p>The purpose of this project was to analyze how weather changes as you get closer to the equator. 
-        To accomplish this analysis, we first pulled data from the OpenWeatherMap API to assemble a dataset 
-        on over 500 cities.
-        <img src="" alt="Me" class="w3-image w3-padding-32" width="600" height="650">
-        <div class="w3-content w3-justify" style="max-width:600px">
-      </p>
+      <h4>{% block title_summary %}{% endblock %}</h4>
+      <p> {% block paragraph %}{% endblock %}</p>
+      <p> {% block paragraph2 %}{% endblock %}</p>
 
-      <hr class="w3-opacity">
-      <h4 class="w3-padding-16">Technical Skills</h4>
-      <p class="w3-wide">Python</p>
-      <div class="w3-white">
-        <div class="w3-container w3-padding-small w3-center w3-grey" style="width:95%">95%</div>
-      </div>
-      <p class="w3-wide">Pandas</p>
-      <div class="w3-white">
-        <div class="w3-container w3-padding-small w3-center w3-grey" style="width:85%">85%</div>
-      </div>
-      <p class="w3-wide">Matplotlib</p>
-      <div class="w3-white">
-        <div class="w3-container w3-padding-small w3-center w3-grey" style="width:80%">80%</div>
-      </div>
-     <!-- <p><button class="w3-button w3-light-grey w3-padding-large w3-margin-top w3-margin-bottom">Download Resume</button></p> -->
-      <hr class="w3-opacity">
-
+      {% block tech_skills %}{% endblock %}
+      
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-grey">  
+  <footer class="w3-container w3-padding-32 w3-white">  
     <div class="w3-row-padding">
       <div class="w3-third">
         <h3>INFO</h3>
@@ -107,11 +98,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <h3>  API's</h3>
         <ul class="w3-ul">
           <li class="w3-padding-16 w3-hover-black">
-            <img src="images/oweather.png" class="w3-left w3-margin-right" style="width:70px">
+            <image src="{{url_for('static',  filename='images/openweather-negative-logo-RGB.png')}}" class="w3-left w3-margin-right" style="width:80px"></image>
             <span class="w3-large"></span><br>
           </li>
           <li class="w3-padding-16 w3-hover-black">
-            <img src="images/placesapl.png" class="w3-left w3-margin-right" style="width:50px">
+            <image src="{{url_for('static',  filename='images/placesapl.png')}}" class="w3-left w3-margin-right" style="width:50px"></image>
             <span class="w3-large">Google Places</span><br>
           </li> 
         </ul>
