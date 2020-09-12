@@ -33,7 +33,7 @@ def correlations():
 def data():
     if request.method == 'GET':
         # to read csv file 
-        df = pd.read_csv("data/processed/cities.csv") 
+        df = pd.read_csv("templates/cities.csv") 
         # fig = go.Figure(data=[go.Table( header=dict(values=list(df.columns),
         #     fill_color='orange',
         #     align='left'),
