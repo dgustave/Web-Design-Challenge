@@ -1,4 +1,43 @@
 {% extends "base.html" %}
+{% block Pagination %}
+  <!-- Pagination -->
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+      <!-- <a href="/humidity" class="w3-bar-item w3-light-grey w3-button iconic">
+        <image src="{{url_for('static', filename='images/Latitude vs. Humidity.jpg')}}"
+        alt="Humidity"  width="100" height="100"></image>
+      </a> -->
+      <a href="/cloudiness" class="w3-bar-item w3-light-grey w3-button iconic">
+        <image src="{{url_for('static', filename='images/Latitude vs. Cloudiness.jpg')}}"
+        alt="Cloudiness" width="100" height="100"></image>
+      </a>
+      <a href="/correlations" class="w3-bar-item w3-light-grey w3-button iconic">
+        <image src="{{url_for('static', filename='images/(North) Cloudiness(%) vs. Latitude Linear Regression.png')}}"
+        alt="Cloudiness Correlation" width="100" height="100"></image>
+      </a>
+      <a href="/" class="w3-bar-item w3-button w3-light-grey iconic">
+        <image src="{{url_for('static', filename='images/sunX.png')}}" 
+        alt="Home"  width="100" height="100"></image>
+      </a>
+      <a href="/correlations" class="w3-bar-item w3-light-grey w3-button iconic">
+        <image src="{{url_for('static', filename='images/(North) Max Temp vs. Latitude Linear Regression.png')}}"
+        alt="Max Tempature Correlation" width ="100" height="100"></image>
+      </a>
+      <a href="/tempature" class="w3-bar-item w3-light-grey w3-button iconic">
+        <image src="{{url_for('static', filename='images/Latitude vs. Max Temperature.jpg')}}"
+        alt="Temperature" width ="100" height="100"></image>
+      </a>
+      <!-- <a href="/windspeed" class="w3-bar-item w3-light-grey w3-button iconic">
+        <image src="{{url_for('static', filename='images/Latitude vs. Wind Speed.jpg')}}" 
+        alt="WindSpeed" width="100" height="100"></image>
+      </a> -->
+      <a href="/compare" class="w3-bar-item w3-light-grey w3-button iconic"></a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+    </div>
+  </div>
+
+{% endblock %}
 {% block sidebar %} X {% endblock %}
 {% block title %}X{% endblock %}
 {% block header_image %}
@@ -21,7 +60,7 @@
         correlations witnesseed.
     </div>
     <div class="col-sm-5">
-        <h4>Preview Comparisons</h4>
+        <h4>Preview Visualizations</h4>
         <iframe class="iframe-container" src="/compare" width= "150%" height= "400" title="Comparisons preview" frameborder="0"></iframe>
         <script>
             // Selecting the iframe element
