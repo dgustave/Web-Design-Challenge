@@ -7,9 +7,8 @@ import csv
 
 app = Flask(__name__)
 
-@app.route("/", endpoint='home')
+@app.route("/home", endpoint='home')
 def home():
-
     return render_template("index.html")
 @app.route("/compare", endpoint='compare')
 def compare():
