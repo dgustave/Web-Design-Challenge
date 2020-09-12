@@ -9,7 +9,7 @@
     }
 
 .g1_img {
-    border-radius: 90%;
+    border-radius: 80%;
     }
 
 .compare {
@@ -17,13 +17,16 @@
     z-index: auto;
 
     }
+.correlation {
+    float: none;
+    }
 
 .left {
-    width: 25%;
+    width: 50%;
     }
       
 .right {
-     width: 75%;
+     width: 50%;
     }
 /* Clear floats after the columns */
 .row:after {
@@ -31,3 +34,28 @@
     display: table;
     clear: both;
     }
+
+    /* Ids------------ */
+/* This codes goes in Custom CSS area: */
+.iframe-container {
+    overflow: hidden;
+    /* 16:9 aspect ratio */
+    padding-top: 0%;
+    position: relative;
+  }
+  
+  .iframe-container iframe {
+     border: 0;
+     height: 120%;
+     left: 0;
+     position: fixed;
+     top: 0%;
+     width: 100%;
+  /* }
+#innerdiv{
+    position : relative;
+    top      : -500px;
+    left     : -800px;
+    width    : 980px;
+    height   : 760px;
+    } */

@@ -1,0 +1,54 @@
+{% extends "base.html"%}
+{% block sidebar %} Correlations {% endblock %}
+{% block title %} Correlations {% endblock %}
+{% block header_image %}
+<div class="row">
+    <div class="col-md-6">
+        <hr class="w3-opacity">
+        <image src="{{url_for('static', filename='images/(North) Cloudiness(%) vs. Latitude Linear Regression.png')}}"
+        alt="Cloudiness" class="correlation w3-center w3-padding-32 w3-hover-orange" width="200" height="200"></image>
+    </div>
+    <div class="col-md-6">
+        <hr class="w3-opacity">
+        <image src="{{url_for('static', filename='images/(North) Humidity (%) vs. Latitude Linear Regression.png')}}"
+        alt="Humidity" class="correlation w3-center w3-padding-32 w3-hover-orange" width="200" height="200"></image>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+        <hr class="w3-opacity">
+        <image src="{{url_for('static', filename='images/(North) Max Temp vs. Latitude Linear Regression.png')}}" 
+        alt="Temperature" class="correlation w3-center w3-padding-32 w3-hover-orange" width="200" height="200"></image>
+    </div>
+    <div class="col-md-6">
+        <hr class="w3-opacity">
+        <image src="{{url_for('static', filename='images/(North) Wind Speed (mph) vs. Latitude Linear Regression.png')}}" 
+        alt="WindSpeed" class="correlation w3-center w3-padding-32 w3-hover-orange" width="200" height="200"></image>
+    </div>
+</div>
+{% endblock %}
+{% block sheader_image %}
+<div class="row">
+    <div class="col-md-6">
+        <hr class="w3-opacity">
+        <image src="{{url_for('static', filename='images/(South) Cloudiness (%) vs. Latitude Linear Regression.png')}}" 
+        alt="Cloudiness" class="correlation w3-center w3-padding-32 w3-hover-orange" width="200" height="200"></image>
+    </div>
+    <div class="col-md-6">
+        <hr class="w3-opacity">
+        <image src="{{url_for('static', filename='images/(South) Humidity (%) vs. Latitude Linear Regression.png')}}" 
+        alt="Humidity" class="correlation w3-center w3-padding-32 w3-hover-orange" width="200" height="200"></image>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+        <hr class="w3-opacity">
+        <image src="{{url_for('static', filename='images/(South) Max Temp vs. Latitude Linear Regression .png')}}" 
+        alt="WindSpeed" class="correlation w3-center w3-padding-32 w3-hover-orange" width="200" height="200"></image>
+    </div>
+    <div class="col-md-6">
+        <hr class="w3-opacity">
+        <image src="{{url_for('static', filename='images/(South) Wind Speed (mph) vs. Latitude Linear Regression.png')}}" 
+        alt="WindSpeed" class="correlation w3-center w3-padding-32 w3-hover-orange" width="200" height="200"></image>
+    </div>
+</div>
+{% endblock %}
+{% block paragraph %}{% endblock %}

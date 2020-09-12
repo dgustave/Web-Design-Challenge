@@ -1,4 +1,11 @@
 {% extends "base.html"%}
-{% block title %} Cloduiness {% endblock %}
-{% block title_summary %}Cloduiness{% endblock %}
+{% block title %} Wind Speed {% endblock %}
+{% block header_image %}
+<image src="{{url_for('static', filename='images/Latitude vs. Humidity.jpg')}}" href="/windspeed"
+alt="Humidity" class="w3-image w3-padding-32 w3-hover-orange" width="500" height="500"></image>
+{% endblock %}
+{% block title_summary %}
+<p>Wind is the movement of air caused by the uneven heating of the Earth by the Sun. Differences in the atmospheric pressure creates winds. This plot was created using 500 cities latitude information around the world. As a result, 
+    we can say that there is no trend or relation between latitude and wind speed, as we get closet to the equator. </p>
+{% endblock %}
 {% block paragraph %}{% endblock %}

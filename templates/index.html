@@ -1,28 +1,48 @@
 {% extends "base.html" %}
+{% block sidebar %} X {% endblock %}
 {% block title %}X{% endblock %}
 {% block header_image %}
 <image src="{{url_for('static', filename='images/sunX.png')}}" alt="Sunny" class="w3-image w3-padding-32" width="400" height="450"></image>
 {% endblock %}
+
 {% block title_summary %}Summary{% endblock %}
 {% block paragraph %}
-    The purpose of this project was to analyze how weather changes as you get closer to the equator. To
-accomplish this analysis, I pulled data from the OpenWeatherMap API to assemble a dataset on over 500
-cities. As I looped through the information, I saved the entries by city ID as their unique identifier. These 
-saved files included log entries, csv's, and data visualizations that could be extracted at any moment in time. 
+<div class="row">
+    <div class="col-sm-7">
+            The purpose of this project was to analyze how weather changes as you get closer to the equator. To
+        accomplish this analysis, I pulled data from the OpenWeatherMap API to assemble a dataset on over 500
+        cities. As I looped through the information, I saved the entries by city ID as their unique identifier. These 
+        saved files included log entries, csv's, and data visualizations that could be extracted at any moment in time. 
+        {% endblock %}
+        {% block paragraph2 %}
+            After assembling the dataset, we used Matplotlib to plot various aspects of the weather vs. latitude. The factors
+        I looked at included; temperature, cloudiness, wind speed, and humidity. Here you will find the souce data
+        and visualizations created as part of the analysis, as well as explanations, descriptions of any trends, and
+        correlations witnesseed.
+    </div>
+    <div class="col-sm-5">
+        <h4>Preview Comparisons</h4>
+        <iframe class="iframe-container" src="/compare" width= "150%" height= "400" title="Comparisons preview" frameborder="0"></iframe>
+        <script>
+            // Selecting the iframe element
+            var iframe = document.getElementById("iframe-container");
+            
+            // Adjusting the iframe height onload event
+            iframe.onload = function(){
+                iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+            }
+        </script>
+    </div>
+</div>
 {% endblock %}
-{% block paragraph2 %}
-    After assembling the dataset, we used Matplotlib to plot various aspects of the weather vs. latitude. The factors
-I looked at included; temperature, cloudiness, wind speed, and humidity. Here you will find the souce data
-and visualizations created as part of the analysis, as well as explanations, descriptions of any trends, and
-correlations witnesseed.
-{% endblock %}
+
 
 {% block tech_skills %}
 <div class="row">
     <div class="col-md-2">
         <hr class="w3-opacity">
         <image src="{{url_for('static', filename='images/tan.png')}}" 
-        alt="Too Tan" class=" g1_img w3-image w3-center  w3-padding-32 w3-hover-orange" width="150" height="200"></image>
+        alt="Too Tan" class=" g1_img w3-image w3-center  w3-padding-32 w3-hover-orange" width="350" height="300"></image>
     </div>
     <div class="col-md-10">
         <h4 class="w3-padding-16 w3-center">Technical Skills</h4>

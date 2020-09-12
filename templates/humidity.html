@@ -1,4 +1,13 @@
 {% extends "base.html"%}
-{% block title %} Cloduiness {% endblock %}
-{% block title_summary %}Cloduiness{% endblock %}
-{% block paragraph %}{% endblock %}
+{% block title %} Humidity {% endblock %}
+{% block header_image %}
+<image src="{{url_for('static', filename='images/Latitude vs. Humidity.jpg')}}" href="/humidity"
+alt="Humidity" class="w3-image w3-padding-32 w3-hover-orange" width="500" height="500"></image>
+{% endblock %}
+{% block title_summary %}Humidity{% endblock %}
+{% block paragraph %}
+<p>Humidity vs latitude plot is not showing any trends. Humidity appears to be mostly regular across latitudes, 
+    though with an absence of lower humidity values near the equator and Arctic. 
+    This makes sense, due to the humidity of tropical climates, 
+    and the northern latitudes being on the boundary between winter and spring.  </p>
+{% endblock %}
