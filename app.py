@@ -7,28 +7,28 @@ import csv
 
 app = Flask(__name__)
 
-@app.route("/home", endpoint='home')
+@app.route("https://open-weather-vis.herokuapp.com/home", endpoint='home')
 def home():
     return render_template("index.html")
-@app.route("/compare", endpoint='compare')
+@app.route("https://open-weather-vis.herokuapp.com/compare", endpoint='compare')
 def compare():
     return render_template("compare.html")
-@app.route("/humidity", endpoint='humidity')
+@app.route("https://open-weather-vis.herokuapp.com/humidity", endpoint='humidity')
 def humidity():
     return render_template("humidity.html")
-@app.route("/tempature", endpoint='tempature')
+@app.route("https://open-weather-vis.herokuapp.com/tempature", endpoint='tempature')
 def tempature():
     return render_template("tempature.html")
-@app.route("/windspeed", endpoint='windspeed')
+@app.route("https://open-weather-vis.herokuapp.com/windspeed", endpoint='windspeed')
 def windspeed():
     return render_template("windspeed.html")
-@app.route("/cloudiness", endpoint='cloudiness')
+@app.route("https://open-weather-vis.herokuapp.com/cloudiness", endpoint='cloudiness')
 def compare():
     return render_template("cloudiness.html")
-@app.route("/correlations", endpoint='correlations')
+@app.route("https://open-weather-vis.herokuapp.com/correlations", endpoint='correlations')
 def correlations():
     return render_template("correlations.html")
-@app.route("/data", methods=['GET', 'POST'], endpoint='data')
+@app.route("https://open-weather-vis.herokuapp.com/data", methods=['GET', 'POST'], endpoint='data')
 def data():
     if request.method == 'GET':
         # to read csv file 
