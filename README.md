@@ -4,13 +4,9 @@ Using HTML and CSS to create a dashboard showing off the analysis of an Open Wea
 
 ![static/images/openweather-negative-logo-RGB.png](static/images/openweather-negative-logo-RGB.png)
 
-### Using the repository in a local enviroment
+### Use This Link to see the github io:
 
-* Use requirements file to download dependencies and enviroment. 
-* Enable FLASK_ENV: for 'production', 'development', or 'testing'.
-* Enable FLASK_APP = app.py
-* Otherwise just do a python run app.py. 
-
+### Use This Link to see it deployed as flask app:
 
 
 ## Latitude - Latitude Analysis Dashboard with Attitude

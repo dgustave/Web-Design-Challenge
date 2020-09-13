@@ -1,11 +1,156 @@
-{% extends "base.html"%}
-{% block title %} Cloudiness {% endblock %}
-{% block header_image %}
-<image src="{{url_for('static', filename='images/Latitude vs. Cloudiness.jpg')}}" href="/cloudiness"
-alt="Cloudiness" class="w3-image w3-padding-32 w3-hover-orange" width="500" height="500"></image>
-{% endblock %}
-{% block title_summary %} Cloudiness {% endblock %}
-{% block paragraph %}
-<p>This plot doesn't necessarily show any trend between latitude and cloudiness. We can't say cloudiness increase or decrease when latitude get closer to the equator. Clouds tend to form in abundance in the middle latitudes 60 degrees north and south of the equator. 
-    This is where the edges of polar and mid latitude circulation cells collide and push air upward. </p>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Open Weather Cloudiness Template</title>
+</head>
+ <!-- JQuery for data table-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+ <!-- Bootstrap for data table-->
+ <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <script type = "text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+ <script type = "text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ <script type = "text/javascript"  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+ <!-- Beginning of W3 bootstraps -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/styles/styles.css">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
+.w3-third img:hover{opacity: 1}
+</style>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+      <!--Navbar Top-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand text-white" href="/" >Latitude</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Plots</a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="/tempature.html">Max Temperature</a>
+                              <a class="dropdown-item" href="/humidity.html">Humidity</a>
+                              <a class="dropdown-item" href="/cloudiness.html">Cloudiness</a>
+                              <a class="dropdown-item" href="/windspeed.html">Wind Speed</a>
+                              <a class="dropdown-item" href="/correlations.html">Correlations</a>
+                              <a class="dropdown-item" href="/comparisons.html">Comparisons</a>
+                          </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/compare.html">Comparisons</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/correlations.html">Correlations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/data.html">Data</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-sand w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+  <h3 class="w3-padding-64 w3-center"><b><br> Latitude vs. Cloudiness</b></h3>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+  <a href="/index.html" onclick="w3_close()" class="w3-bar-item w3-button">Home</a> 
+  <a href="/cloudiness.html" onclick="w3_close()" class="w3-bar-item w3-button">Cloudiness</a>
+  <a href="/humidity.html" onclick="w3_close()" class="w3-bar-item w3-button">Humidty</a> 
+  <a href="/tempature.html" onclick="w3_close()" class="w3-bar-item w3-button">Tempature</a>
+  <a href="/windspeed.html" onclick="w3_close()" class="w3-bar-item w3-button">Wind Speed</a>
+
+    <!-- <h6 class ="" >POPULAR TAGs </h6>
+      <p>
+        <span class="w3-tag w3-black w3-margin-bottom">Travel</span> 
+        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">API-Challenge</span> 
+        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Vacation</span>
+        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Bootcamp Goals</span>
+      </p> -->
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
+  <span class="w3-left w3-padding">Open Weather</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Push down content on small screens --> 
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+  
+  
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+  
+
+  <!-- Summary section -->
+  <!-- This includes visualizations and information for 
+    other pages. -->
+  <div class="w3-container w3-white w3-center w3-text-grey w3-padding-32" id="about">
+    <h4><b>Latitude vs. Cloudiness</b></h4>
+    <img src="../static/images/Latitude vs. Cloudiness.jpg" href="/cloudiness.html"
+    alt="Humidity" class="w3-image w3-padding-32 w3-hover-orange" width="500" height="500"></img>
+    <div class="w3-content w3-justify" style="max-width:600px">
+      <p>This plot doesn't necessarily show any trend between latitude and cloudiness. We can't say cloudiness increase or decrease when latitude get closer to the equator. Clouds tend to form in abundance in the middle latitudes 60 degrees north and south of the equator. 
+        This is where the edges of polar and mid latitude circulation cells collide and push air upward. </p>
+    <!-- Footer -->
+    <footer class="page-footer font-small footer-dark">
+      <div class="w3-white w3-center w3-padding-24">Powered by <a href="---" title="Gustave LLC" target="_blank" class="w3-hover-opacity">Gustave LLC</a></div>
+      <div class="footer-copyright text-center py-3">© Copyright Gustave LLC 2020
+      </div>      
+  </footer>
+</body>
+</html>
+  
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+</script>
+
+
+</body>
+</html>
